@@ -1,8 +1,7 @@
-
-import React, { useState, useRef, useEffect } from "react";
-import { Check, ChevronDown } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { useIsMobile } from "@/hooks/use-mobile";
+import React, { useState, useRef, useEffect } from 'react';
+import { Check, ChevronDown } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface DropdownItem {
   id: string;
@@ -26,13 +25,12 @@ const MobileDropdown: React.FC<MobileDropdownProps> = ({
   items,
   selectedItem,
   onChange,
-  className = "",
-  buttonClassName = "",
-  showIcon = false,
+  className = '',
+  buttonClassName = '',
+  showIcon = false
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile();
 
   const handleSelect = (item: DropdownItem) => {
     onChange(item);
@@ -42,17 +40,14 @@ const MobileDropdown: React.FC<MobileDropdownProps> = ({
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
@@ -86,16 +81,8 @@ const MobileDropdown: React.FC<MobileDropdownProps> = ({
       </button>
 
       {isOpen && (
-        <div
-          className={cn(
-            'absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5',
-            isMobile && 'fixed inset-x-0 bottom-0 mt-0 rounded-b-none'
-          )}
-        >
-          <div className={cn('max-h-[50vh] overflow-y-auto', isMobile && 'pb-safe')}>
-            {isMobile && (
-              <div className="sticky top-0 bg-white p-2 text-center font-medium">{label}</div>
-            )}
+        <div className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5">
+          <div className="max-h-[50vh] overflow-y-auto">
             {items.map(item => (
               <button
                 key={item.id}
