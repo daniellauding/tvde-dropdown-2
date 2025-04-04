@@ -6,31 +6,17 @@ import ChannelSelector from "@/components/ChannelSelector";
 import ChannelList from "@/components/ChannelList";
 import ChannelProgram from "@/components/ChannelProgram";
 import { Search, Clock, Moon } from "lucide-react";
-
 const Index = () => {
   const [selectedChannel, setSelectedChannel] = useState<Channel | null>(null);
-  
   const handleChannelSelect = (channel: Channel) => {
     setSelectedChannel(channel);
   };
-
-  return (
-    <div className="min-h-screen bg-gray-50 pb-20">
+  return <div className="min-h-screen bg-gray-50 pb-20">
       {/* Header */}
       <header className="sticky top-0 z-10 bg-white shadow">
         <div className="container mx-auto flex items-center justify-between p-4">
           <button className="text-gray-500">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="4" x2="20" y1="12" y2="12" />
               <line x1="4" x2="20" y1="6" y2="6" />
               <line x1="4" x2="20" y1="18" y2="18" />
@@ -38,11 +24,7 @@ const Index = () => {
           </button>
           
           <div className="flex items-center gap-2">
-            <img 
-              src="/lovable-uploads/02a1db7b-815e-4fb7-b1aa-cbdfd411c42b.png" 
-              alt="TV Guide Logo" 
-              className="h-10" 
-            />
+            <img src="/lovable-uploads/02a1db7b-815e-4fb7-b1aa-cbdfd411c42b.png" alt="TV Guide Logo" className="h-10" />
           </div>
           
           <div className="flex items-center gap-4">
@@ -66,9 +48,7 @@ const Index = () => {
             <ProviderDropdown />
           </div>
           <div className="flex-1 md:max-w-xs">
-            <ChannelDropdown 
-              onChange={(channel) => setSelectedChannel(channel)} 
-            />
+            <ChannelDropdown onChange={channel => setSelectedChannel(channel)} />
           </div>
           <div className="flex-1 md:max-w-xs">
             <DateDropdown />
@@ -78,23 +58,11 @@ const Index = () => {
 
       {/* Channel Quick Access */}
       <div className="container mx-auto px-4 py-4">
-        <ChannelSelector
-          channels={channels}
-          selectedChannel={selectedChannel}
-          onSelect={handleChannelSelect}
-        />
+        <ChannelSelector channels={channels} selectedChannel={selectedChannel} onSelect={handleChannelSelect} />
       </div>
 
       {/* Channel List */}
-      <div className="container mx-auto px-4 py-4">
-        {selectedChannel ? (
-          <ChannelProgram channel={selectedChannel} />
-        ) : (
-          <ChannelList channels={channels} />
-        )}
-      </div>
-    </div>
-  );
+      
+    </div>;
 };
-
 export default Index;
