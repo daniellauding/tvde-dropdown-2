@@ -1,10 +1,10 @@
-
 import React, { useState } from "react";
 import ProviderDropdown from "@/components/ProviderDropdown";
 import ChannelDropdown, { Channel, channels } from "@/components/ChannelDropdown";
 import DateDropdown from "@/components/DateDropdown";
 import ChannelSelector from "@/components/ChannelSelector";
 import ChannelList from "@/components/ChannelList";
+import ChannelProgram from "@/components/ChannelProgram";
 import { Search, Clock, Moon } from "lucide-react";
 
 const Index = () => {
